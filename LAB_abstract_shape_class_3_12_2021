@@ -1,0 +1,82 @@
+abstract class Shape
+{
+int d1, d2;
+Shape(int d1, int d2)
+	{
+	this.d1 = d1;
+	this.d2 = d2;
+	}
+Shape(int d1)
+	{
+	this.d1 = d1;
+	}
+
+
+abstract void printArea();
+}
+
+
+
+class Rectangle extends Shape
+{
+	Rectangle(int h, int w)
+	{
+	super(h,w);
+	}
+void printArea(){
+double Area = (double)d1*d2;
+System.out.println("Area of rectangle is " +Area);
+}
+		
+} 
+
+
+
+class triangle extends Shape
+{
+int base;
+triangle(int h,int base)
+{
+super(h,base);
+
+}	
+void printArea(){
+double Area = (double)d1*d2*0.5;
+System.out.println("Area of triangle is " +Area);
+}	
+
+}
+
+
+
+
+class circle extends Shape
+{
+int radius;	
+circle(int radius)
+{
+super(radius);
+}
+void printArea(){
+double Area = (double)3.14*d1*d1;
+System.out.println("Area of circle is " +Area);
+}
+
+}
+
+
+
+
+
+public class Main{
+public static void main(String args[]){
+circle c1 = new circle(33);
+triangle t1 = new triangle(60,60);
+Rectangle r1 = new Rectangle(28,362); 
+
+c1.printArea();
+t1.printArea();
+r1.printArea();
+
+}
+}
