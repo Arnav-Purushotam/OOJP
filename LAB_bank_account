@@ -1,0 +1,137 @@
+import java.lang.*;
+import java.util.*;
+
+public class bank_account{
+String name;
+double acc_number;
+double simple_interest;
+double balance;
+
+void accept()
+{
+Scanner scan = new Scanner(System.in);
+System.out.println("Enter your name");
+name = scan.nextLine();
+System.out.println("Enter your account number");
+acc_number = scan.nextDouble();
+System.out.println("Enter the account balance");
+name = scan.nextLine();
+System.out.println("Enter number of years");
+years = scan.nextDouble();
+}
+void display()
+{
+System.out.println("Details");
+System.out.println("Name: "+name +"Account Number: "+acc_number +"Balance: "+balance);
+}
+void deposits()
+{
+Scanner scan = new Scanner(System.in);
+System.out.println("Do you want to deposit(1:yes , 2:no) ::");
+int d = scan.nextInt();
+if(d==1)
+{
+System.out.println("Enter the amount you want to deposit");
+int amt = scan.nextInt();
+balance=balance+amt;
+System.out.println("Available balance: "+balance);
+}
+}
+}
+
+class sav-acct extends bank_account{
+double years;
+double simple_interest;
+double withdrawal;
+simple_interest=((balance)*(5)*(years))/100;
+Scanner scan = new Scanner(System.in);
+void cheque()
+{
+System.out.println("No Cheque facility available");
+}
+void simple_interest()
+{
+System.out.println("Simple interest= Rs. "+simple_interest);
+}
+void withdrawal()
+{
+float amount;
+Scanner scan = new Scanner(System.in);
+System.out.println("No Minimum balance");
+System.out.println("Enter the withdrawal amount");
+amount = scan.nextFloat();
+if(amount>balance)
+{
+System.out.println("Insufficient balance");
+}
+else
+{
+balance=balance-amount;
+System.out.println("Available balance: "+balance);
+}
+}
+
+class curr-acct extends bank_account{
+double service_charge;
+double min_bal;
+min_bal=500;
+service_charge=50;
+void cheque()
+{
+System.out.println("Cheque facility available");
+}
+void withdrawal()
+{
+float amount;
+System.out.println("1:Saving");
+Scanner scan = new Scanner(System.in);
+System.out.println("Minimum balance is Rs. 500");
+System.out.println("Enter the withdrawal amount");
+amount = scan.nextFloat();
+if(amount>balance)
+{
+System.out.println("Insufficient balance");
+}
+else
+{
+balance=balance-amount;
+if(balance<500)
+{
+balance=balance-service_charge;
+System.out.println("Rs. 50 service charge,Available balance: "+balance);
+}
+else
+{
+System.out.println("Available balance: "+balance);
+}
+}
+}
+public class bankmain{
+public static void main(String args[]){
+sav-acct ob1 = new sav-acct();
+curr-acct ob2 = new curr-acct();
+System.out.println("1:Saving");
+System.out.println("2:Current");
+System.out.println("Enter your choice");
+Scanner scan = new Scanner(System.in);
+int ch = scan.nextInt();
+switch(ch)
+{
+ case 1: ob1.accept();
+	 ob1.display();
+	 ob1.deposits();
+	 ob1.cheque();
+	 ob1.simple_interest();
+	 ob1.withdrawal();
+	 break;
+ case 2: ob2.accept();
+	 ob2.display();
+	 ob2.deposits();
+	 ob2.cheque();
+	 ob1.withdrawal();
+	 break;
+default:System.out.println("Incorrect choice entered");
+}
+}
+}
+
